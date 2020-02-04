@@ -1,2 +1,3 @@
-# Programmation-Orient-ee-Objet
-TP de Programmation Orientéee Objet (L2 informatique)
+# Programmation Orientée Objet
+
+TP de Programmation Orientée Objet (L2 informatique)
