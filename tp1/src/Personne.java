@@ -4,8 +4,8 @@ import date.*;
 public class Personne {
   private String nom;
   private String prenom;
-  private char sexe;
-  private Date naissance;
+  private final char sexe;
+  private final Date naissance;
   private boolean estMarie;
   private Date mariage;
   private Personne parent1;
