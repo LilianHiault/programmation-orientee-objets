@@ -1,7 +1,6 @@
 # Notes POO
 
-## Trouver les voyelles
-
+## Trouver des caarctères
 ```java
 "aeiouyAEIOUY".indexOf(c) != -1 // vrai si c'sest une voyelle
 ```
