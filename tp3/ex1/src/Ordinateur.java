@@ -9,8 +9,8 @@ public class Ordinateur extends Joueur {
 	private Random random;
 
 	// Constructeur
-	public Ordinateur() {
-		super("Ordinatueur");
+	public Ordinateur(String nom) {
+		super("Ordinatueur " + nom);
 		this.random = new Random();
 	}
 

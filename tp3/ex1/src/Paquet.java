@@ -4,6 +4,7 @@ import carte.*;
 import couleur.*;
 import java.util.*;
 
+
 public class Paquet {
 	public ArrayList <Carte> paquet = new ArrayList <Carte> (52);
 
@@ -15,8 +16,10 @@ public class Paquet {
 			strJeu = "Jeu vide";
 		}
 		else{
+			int comp = 0;
 			for(Carte i : this.paquet) {
-				strJeu = strJeu + i.toString() + "\n";
+				strJeu = strJeu  + comp + " " + i.toString() + "\n";
+				comp++;
 			}
 		}
 		return strJeu;
@@ -44,11 +47,17 @@ public class Paquet {
 	}
 
 	public void melanger() { // Mélange le paquet
-			// Créer un nouveau paquet, mettre les cartes prises à un indice aléatoire
-			// du paquet initial vers le nouveau
-			Paquet paquetilini = new Paquet();
-			for(Carte c : this.paquet) {
-				// OUI
-			}
+		// Créer un nouveau paquet, mettre les cartes prises à un indice aléatoire
+		// du paquet initial vers le nouveau
+		Random rand = new Random();
+		rand.ints();
+		int randIndex;
+		int i = 0;
+		int nbMelanges = this.getNombreCartes() * 2;
+		while (i < nbMelanges) {
+			randIndex = Integer.valueOf(rand.nextInt(this.getNombreCartes()));
+			this.ajouterCarte(this.retirerCarte(randIndex));
+			i++;
+		}
 	}
 }

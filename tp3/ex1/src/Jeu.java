@@ -5,6 +5,7 @@ import carte.*;
 import paquet.*;
 import joueur.*;
 import ordi.*;
+import humain.*;
 
 public class Jeu {
 	private Joueur joueur1;
@@ -22,15 +23,19 @@ public class Jeu {
 	private void jouerCoup() {
 		Carte carte1 = joueur1.choisirCarte();
 		Carte carte2 = joueur2.choisirCarte();
+		System.out.format("%s a joué %s.\n", joueur1.getNom(), carte1.toString());
+		System.out.format("%s a joué %s.\n", joueur2.getNom(), carte2.toString());
 
 		if (carte1.compare(carte2) > 0) {
 			joueur1.recupererCarte(carte1);
 			joueur1.recupererCarte(carte2);
+			System.out.format("%s a gagné le coup !\n\n", joueur1.getNom());
 		}
 		else
 		{
 			joueur2.recupererCarte(carte1);
 			joueur2.recupererCarte(carte2);
+			System.out.format("%s a gagné le coup !\n\n", joueur2.getNom());
 		}
 
 	}
@@ -45,6 +50,7 @@ public class Jeu {
 				this.paquetito.ajouterCarte(new Carte(c, v));
 			}
 		}
+		this.paquetito.melanger();
 	}
 
 	private void distribuerPaquet() {
@@ -63,20 +69,26 @@ public class Jeu {
 		while(!joueur1.aPerdu() && !joueur2.aPerdu()){
 			jouerCoup();
 		}
+		if (joueur2.aPerdu()) {
+			System.out.format("%s a gagné la partie ! Bravo !\n", joueur1.getNom());
+		}
+		else {
+			System.out.format("%s a gagné la partie ! Bravo !\n", joueur2.getNom());
+		}
 	}
 
 	public static void main(String[] args) {
-		Joueur baptou = new Ordinateur();
-		Joueur lilianus = new Ordinateur();
+		Joueur baptou = new Ordinateur("Baptman");
+		Joueur lilianus = new Ordinateur("YO");
 		Jeu	juego = new Jeu(baptou, lilianus);
 		juego.creerNouveauPaquet();
 		juego.distribuerPaquet();
-		System.out.println(juego.paquetito.toString());
-		System.out.println(baptou.toString());
-		System.out.println(lilianus.toString());
+		// System.out.println(juego.paquetito.toString());
+		// System.out.println(baptou.toString());
+		// System.out.println(lilianus.toString());
 		juego.jouerPartie();
-		System.out.println(baptou.toString());
-		System.out.println(lilianus.toString());
+		// System.out.println(baptou.toString());
+		// System.out.println(lilianus.toString());
 
 		// System.out.println(lilianus.paqueto.toString());
 	}

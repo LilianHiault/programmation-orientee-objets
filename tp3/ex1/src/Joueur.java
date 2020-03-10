@@ -14,6 +14,10 @@ public abstract class Joueur {
 	}
 
 	// Méthodes
+	public String getNom() {
+		return this.nom;
+	}
+
 	public final void nouveauJeu() {
 		this.paqueto = new Paquet(); // Crée un paquet
 	}
