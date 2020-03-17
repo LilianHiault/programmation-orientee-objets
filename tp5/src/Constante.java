@@ -1,5 +1,7 @@
 package constante;
 
+import noeud.*;
+
 public class Constante extends Noeud {
   // Une constante
   private final double valeur;

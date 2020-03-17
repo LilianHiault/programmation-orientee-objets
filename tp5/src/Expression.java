@@ -10,8 +10,8 @@ public class Expression {
   Noeud racine;
 
   // Constructeur
-  public Expression (Symbole symb) {
-    this.racine = new Noeud(symb);
+  public Expression (Noeud r) {
+    this.racine = r;
   }
 
   public double resoudre () {
