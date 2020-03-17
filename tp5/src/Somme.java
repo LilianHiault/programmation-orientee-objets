@@ -12,4 +12,8 @@ public class Somme extends Operateur {
   public double resoudre() {
     return this.enfant1.resoudre() + this.enfant2.resoudre();
   }
+
+  public String toString() {
+    return "(" + this.enfant1.toString() + " + " + this.enfant2.toString() + ")";
+  }
 }

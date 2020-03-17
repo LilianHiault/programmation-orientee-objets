@@ -11,7 +11,11 @@ public class Constante extends Noeud {
     this.valeur = val;
   }
 
-  public double resoudre () {
+  public double resoudre() {
     return this.valeur;
+  }
+
+  public String toString() {
+    return String.valueOf(this.valeur);
   }
 }

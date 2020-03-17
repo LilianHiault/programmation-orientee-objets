@@ -17,4 +17,8 @@ public class Expression {
   public double resoudre () {
     return racine.resoudre();
   }
+
+  public String toString () {
+    return racine.toString();
+  }
 }

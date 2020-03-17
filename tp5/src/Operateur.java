@@ -14,4 +14,6 @@ public abstract class Operateur extends Noeud {
   }
 
   public abstract double resoudre();
+
+  public abstract String toString();
 }

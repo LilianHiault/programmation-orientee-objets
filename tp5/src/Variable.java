@@ -2,7 +2,7 @@ package variable;
 
 import noeud.*;
 
-public class Variable extends Noeud {
+public class Variable /*extends Noeud*/ {
     private String nom;
 
     public double resoudre() {
