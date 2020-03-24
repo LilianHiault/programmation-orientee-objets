@@ -6,6 +6,8 @@ import opeFormelles.*;
 import operateur.*;
 import symbole.*;
 
+import java.util.*;
+
 class Main {
   public static void main(String[] args) {
 
@@ -16,9 +18,17 @@ class Main {
     Multiplication mult = new Multiplication(n2, plus); // 6
     Division div = new Division(mult, moins); // -3
 
+    Fonction f = new Fonction("f", div);
     Expression exp = new Expression(div);
 
     System.out.println(exp.toString());
     System.out.println(exp.resoudre());
+    System.out.println(f.toString());
+
+    Map<String, Double> test = new HashMap();
+    test.put("x", 1.2);
+    test.put("y", 3);
+    Affectation aff = new Affectation(test);
+    System.out.println(aff.toString);
   }
 }
