@@ -4,10 +4,10 @@ import opeFormelles.*;
 import java.util.*;
 
 public class Affectation extends OpeFormelles{
-  private Map<String, double> affect;
+  private HashMap<String, Double> affect;
 
-  public Affectation(Map<String, double> affec) {
-    this.affect = affect;
+  public Affectation(HashMap<String, Double> aff) {
+    this.affect = aff;
   }
 
   public double resoudre() {
@@ -15,10 +15,14 @@ public class Affectation extends OpeFormelles{
   }
 
   public String toString() {
-    String aff = "";
-    for (String nom : this.affect) {
-      aff = aff + nom + "=" + this.affect.get(nom) + ", ";
+    if (this.affect == null) {
+      throw new NullPointerException();
+    } else {
+      String aff = "";
+      for (String nom : this.affect.keySet()) {
+        aff = aff + nom + "=" + this.affect.get(nom) + ", ";
+      }
+      return aff;
     }
-    return aff;
   }
 }

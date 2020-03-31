@@ -1,10 +1,11 @@
+import affectation.*;
+import constante.*;
 import expression.*;
 import noeud.*;
-import constante.*;
-import variable.*;
 import opeFormelles.*;
 import operateur.*;
 import symbole.*;
+import variable.*;
 
 import java.util.*;
 
@@ -25,10 +26,10 @@ class Main {
     System.out.println(exp.resoudre());
     System.out.println(f.toString());
 
-    Map<String, Double> test = new HashMap();
+    HashMap<String, Double> test = new HashMap<String, Double>();
     test.put("x", 1.2);
-    test.put("y", 3);
+    test.put("y", 3.0);
     Affectation aff = new Affectation(test);
-    System.out.println(aff.toString);
+    System.out.println(aff.toString());
   }
 }
