@@ -6,8 +6,12 @@ import java.util.*;
 public class Affectation extends OpeFormelles{
   private HashMap<String, Double> affect;
 
-  public Affectation(HashMap<String, Double> aff) {
-    this.affect = aff;
+  public Affectation() {
+    this.affect = new HashMap<String, Double>();
+  }
+
+  public void addCouple(String key,Double value){
+    this.affect.put(key,value);
   }
 
   public double resoudre() {

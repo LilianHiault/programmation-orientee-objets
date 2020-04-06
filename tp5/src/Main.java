@@ -5,7 +5,7 @@ import variable.*;
 import opeFormelles.*;
 import operateur.*;
 import symbole.*;
-//import affectation.*;
+import affectation.*;
 
 import java.util.*;
 
@@ -192,15 +192,9 @@ class Main {
     System.out.println(f.toString());
 
     System.out.println("\nTraducteur\n");
-/*
-    String str1 = new String("1.0 + (1.0 + 2.0)");
-    str1 = str1.replace(" ","");
-      //String str = "1234567890.)))";
-      //int valeur = separeDouble(str);
-    //System.out.println('4'.isDigit())  ; 
-    System.out.println(str1 + "\n");
 
-  */
+
+  /*
     String str1 = new String(exp6.toString());
 
     System.out.println("str 1 = " +str1);
@@ -213,14 +207,12 @@ class Main {
     System.out.println("exp2 = "+ exp2.toString());
     System.out.println("exp2 = "+ exp2.resoudre());
     
-    
+    */
     //System.out.println("trouveChamps " + trouveChamps("(12,+(465,-(65)))").toString());
-/*
-    Map<String, Double> test = new HashMap();
-    test.put("x", 1.2);
-    test.toString();
-    test.put("y", 3.0);
-    Affectation aff = new Affectation(test);
-    System.out.println(aff.toString);
-  */}
+
+    Affectation aff = new Affectation();
+    aff.addCouple("x", 1.2);
+    aff.addCouple("y", 3.0);
+    System.out.println(aff.toString());
+  }
 }
