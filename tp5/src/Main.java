@@ -14,6 +14,7 @@ class Main {
 
   public static void main(String[] args) {
 
+    /* - - - Test expression - - - */
     Constante n1 = new Constante(1); // 1
     Constante n2 = new Constante(2); // 2
     Somme plus = new Somme(n1, n2); // 3
@@ -25,16 +26,16 @@ class Main {
 
     Fonction f = new Fonction("f", div);
     Expression exp = new Expression(div);
-    Expression exp6 = new Expression(div);
 
     System.out.println(exp.toString());
     System.out.println(exp.resoudre());
     System.out.println(f.toString());
 
+    /* - - - Test traduction - - - */
 
     System.out.println("\nTraducteur\n");
-
-    String str1 = new String(exp6.toString());
+    System.out.println(exp.toString());
+    String str1 = exp.toString();
 
     System.out.println("str 1 = " +str1);
     str1 = str1.substring(1);

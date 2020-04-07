@@ -11,7 +11,7 @@ public class Variable extends Noeud {
   }
 
   public double resoudre() {
-    return 0;
+    throw new IllegalArgumentException("On ne peut pas résoudre une variable !");
   }
 
   public String toString() {

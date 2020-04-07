@@ -20,7 +20,7 @@ public class Affectation extends OpeFormelles{
 
   public String toString() {
     if (this.affect == null) {
-      throw new NullPointerException();
+      throw new NullPointerException("Il n'y a pas d'affectation !");
     } else {
       String aff = "";
       for (String nom : this.affect.keySet()) {
