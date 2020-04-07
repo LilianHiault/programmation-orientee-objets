@@ -49,9 +49,20 @@ class Main {
 
     //System.out.println("trouveChamps " + trouveChamps("(12,+(465,-(65)))").toString());
 
-    Affectation aff = new Affectation();
+        
+    Variable varx = new Variable("x");
+    Variable vary = new Variable("y");
+    Affectation aff = new Affectation();  
+    
+    Somme plus14 = new Somme(vary, varx); // 3
+    Expression exp66 = new Expression(plus14);
     aff.addCouple("x", 1.2);
+    aff.addCouple("x", 1.3);
     aff.addCouple("y", 3.0);
-    System.out.println(aff.toString());
+    exp66.affect(aff);
+    System.out.println(exp66.resoudre());
+
+    System.out.println(exp66.toString());
+  
   }
 }

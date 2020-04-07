@@ -1,5 +1,6 @@
 package operateur;
 
+import affectation.*;
 import noeud.*;
 
 public abstract class Operateur extends Noeud {
@@ -13,6 +14,12 @@ public abstract class Operateur extends Noeud {
     this.enfant2 = n2;
   }
 
+  public void affect (Affectation aff){
+    this.enfant1.affect(aff);
+    this.enfant2.affect(aff);
+    
+  }
+  
   public abstract double resoudre();
 
   public abstract String toString();

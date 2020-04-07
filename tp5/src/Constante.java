@@ -1,5 +1,6 @@
 package constante;
 
+import affectation.*;
 import noeud.*;
 
 public class Constante extends Noeud {
@@ -13,6 +14,10 @@ public class Constante extends Noeud {
 
   public double resoudre() {
     return this.valeur;
+  }
+
+
+  public void affect (Affectation aff){
   }
 
   public String toString() {

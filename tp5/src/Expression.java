@@ -4,6 +4,7 @@ import constante.*;
 import operateur.*;
 import variable.*;
 import noeud.*;
+import affectation.*;
 
 
 public class Expression {
@@ -14,7 +15,13 @@ public class Expression {
     this.racine = r;
   }
 
+
+  public void affect(Affectation aff){
+  this.racine.affect (aff);
+  }
+
   public double resoudre () {
+
     return racine.resoudre();
   }
 

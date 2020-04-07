@@ -1,5 +1,6 @@
 package opeFormelles;
 
+import affectation.*;
 import noeud.*;
 
 public abstract class OpeFormelles extends Noeud {
@@ -7,4 +8,7 @@ public abstract class OpeFormelles extends Noeud {
   private Noeud enfant2;
 
   public abstract double resoudre();
+
+  public void affect (Affectation aff){
+  }
 }
