@@ -12,8 +12,8 @@ public class Variable extends Noeud {
     this.nom = n;
   }
 
-  public void affect (Affectation aff){
-      this.valeur = aff.affect(this.nom) ;
+  public void eval (Affectation aff){
+      this.valeur = aff.eval(this.nom) ;
   }
 
 

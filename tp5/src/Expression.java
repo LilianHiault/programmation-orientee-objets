@@ -8,24 +8,24 @@ import affectation.*;
 
 
 public class Expression {
-  Noeud racine;
+    Noeud racine;
 
-  // Constructeur
-  public Expression (Noeud r) {
-    this.racine = r;
-  }
+    // Constructeur
+    public Expression (Noeud r) {
+        this.racine = r;
+    }
 
 
-  public void affect(Affectation aff){
-  this.racine.affect (aff);
-  }
+    public void eval(Affectation aff){
+        this.racine.eval (aff);
+    }
 
-  public double resoudre () {
+    public double resoudre () {
 
-    return racine.resoudre();
-  }
+        return racine.resoudre();
+    }
 
-  public String toString () {
-    return racine.toString();
-  }
+    public String toString () {
+        return racine.toString();
+    }
 }

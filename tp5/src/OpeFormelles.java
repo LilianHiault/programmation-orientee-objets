@@ -9,6 +9,6 @@ public abstract class OpeFormelles extends Noeud {
 
   public abstract double resoudre();
 
-  public void affect (Affectation aff){
+  public void eval (Affectation aff){
   }
 }

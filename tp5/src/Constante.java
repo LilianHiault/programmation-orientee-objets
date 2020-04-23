@@ -17,7 +17,7 @@ public class Constante extends Noeud {
   }
 
 
-  public void affect (Affectation aff){
+  public void eval (Affectation aff){
   }
 
   public String toString() {

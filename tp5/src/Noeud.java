@@ -7,7 +7,7 @@ public abstract class Noeud {
 
   public abstract double resoudre (); // Valeur du noeud
 
-  public abstract void affect (Affectation aff); // Affiche l'expression
+  public abstract void eval (Affectation aff); // Affiche l'expression
 
   public abstract String toString (); // Affiche l'expression
 }

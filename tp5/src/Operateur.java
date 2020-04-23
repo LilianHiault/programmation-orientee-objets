@@ -14,12 +14,12 @@ public abstract class Operateur extends Noeud {
     this.enfant2 = n2;
   }
 
-  public void affect (Affectation aff){
-    this.enfant1.affect(aff);
-    this.enfant2.affect(aff);
-    
+  public void eval (Affectation aff){
+    this.enfant1.eval(aff);
+    this.enfant2.eval(aff);
+
   }
-  
+
   public abstract double resoudre();
 
   public abstract String toString();

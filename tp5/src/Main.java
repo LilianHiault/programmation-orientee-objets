@@ -34,6 +34,10 @@ class Main {
     /* - - - Test traduction - - - */
 
     System.out.println("\nTraducteur\n");
+
+    // Scanner scan = new Scanner(System.in);
+    // String s = scan.next();
+
     System.out.println(exp.toString());
     String str1 = exp.toString();
 
@@ -49,20 +53,20 @@ class Main {
 
     //System.out.println("trouveChamps " + trouveChamps("(12,+(465,-(65)))").toString());
 
-        
+
     Variable varx = new Variable("x");
     Variable vary = new Variable("y");
-    Affectation aff = new Affectation();  
-    
+    Affectation aff = new Affectation();
+
     Somme plus14 = new Somme(vary, varx); // 3
     Expression exp66 = new Expression(plus14);
     aff.addCouple("x", 1.2);
     aff.addCouple("x", 1.3);
     aff.addCouple("y", 3.0);
-    exp66.affect(aff);
+    exp66.eval(aff);
     System.out.println(exp66.resoudre());
 
     System.out.println(exp66.toString());
-  
+
   }
 }
