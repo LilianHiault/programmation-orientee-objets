@@ -12,61 +12,45 @@ import java.util.*;
 
 class Main {
 
-  public static void main(String[] args) {
+    public static void main(String[] args) {
 
-    /* - - - Test expression - - - */
-    Constante n1 = new Constante(1); // 1
-    Constante n2 = new Constante(2); // 2
-    Somme plus = new Somme(n1, n2); // 3
-    Somme plus2 = new Somme(n2, plus); // 3
-    Somme plus3 = new Somme(n2, plus2); // 3
-    Difference moins = new Difference(n1, plus); // -2
-    Multiplication mult = new Multiplication(n2, plus); // 6
-    Division div = new Division(mult, moins); // -3
+        /* - - - Test traduction - - - */
 
-    Fonction f = new Fonction("f", div);
-    Expression exp = new Expression(div);
+        System.out.println("Tests traduction\n");
 
-    System.out.println(exp.toString());
-    System.out.println(exp.resoudre());
-    System.out.println(f.toString());
+        Scanner scan = new Scanner(System.in);
 
-    /* - - - Test traduction - - - */
+        /* Expression */
+        System.out.println("Entrez une expression : ");
+        String strExp = scan.nextLine();
 
-    System.out.println("\nTraducteur\n");
+        /* Transformer la string en expression */
+        String strExpPref = Traduire.reecriture(strExp); // Transforme en notation préfixée
+        System.out.format("Expression préfixée : %s%n", strExpPref);
 
-    // Scanner scan = new Scanner(System.in);
-    // String s = scan.next();
+        Noeud racine = Traduire.traduction(strExpPref);
+        Expression exp = new Expression(racine);
+        System.out.format("toString() de l'expression entrée :  %s%n", exp.toString());
 
-    System.out.println(exp.toString());
-    String str1 = exp.toString();
+        /* Affectation */
+        System.out.println("Entrez une affectation : ");
+        String strAff = scan.nextLine();
 
-    System.out.println("str 1 = " +str1);
-    str1 = str1.substring(1);
-    String strtrad = new String(Traduire.reecriture(str1));
-    System.out.println(" strtrad = " + strtrad + "\n");
+        String[] allVariables = strAff.trim().split(","); // Chaque case contient une affecation de variable (a=1, b=2, c=3)
+        Affectation aff = new Affectation();
+        String[] affVar;
+        for (String var : allVariables) // var : a=1
+        {
+            affVar = var.trim().split("=");
+            aff.addCouple(affVar[0].trim(), Double.parseDouble(affVar[1].trim()));
+        }
+        System.out.format("Affectation enregistrée : %s%n", aff.toString());
 
+        /* Evaluer l'expression */
+        exp.eval(aff);
 
-    Expression exp2 = new Expression(Traduire.traduction(strtrad));
-    System.out.println("exp2 = "+ exp2.toString());
-    System.out.println("exp2 = "+ exp2.resoudre());
-
-    //System.out.println("trouveChamps " + trouveChamps("(12,+(465,-(65)))").toString());
-
-
-    Variable varx = new Variable("x");
-    Variable vary = new Variable("y");
-    Affectation aff = new Affectation();
-
-    Somme plus14 = new Somme(vary, varx); // 3
-    Expression exp66 = new Expression(plus14);
-    aff.addCouple("x", 1.2);
-    aff.addCouple("x", 1.3);
-    aff.addCouple("y", 3.0);
-    exp66.eval(aff);
-    System.out.println(exp66.resoudre());
-
-    System.out.println(exp66.toString());
-
-  }
+        /* Résoudre l'expression */
+        double resultat = exp.resoudre();
+        System.out.format("Le résultat de l'opération est : %f.%n", resultat);
+    }
 }
