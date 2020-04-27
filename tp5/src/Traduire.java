@@ -3,6 +3,8 @@ package traduction;
 import noeud.*;
 import constante.*;
 import symbole.*;
+import variable.*;
+import expression.*;
 
 
 import java.util.*;
@@ -113,6 +115,9 @@ public class Traduire {
                 traduction = "/(" + traduction + ',';
 
                 break;
+                case '<':
+                i+=1;
+                break;
 
                 default:
                 if (Character.isDigit(currC) ) {
@@ -122,6 +127,44 @@ public class Traduire {
                     i += suite-1;
                     traduction += constante;
                     // System.out.println("Post constante " +traduction);
+                }
+
+                else if(Character.isAlphabetic(currC)){
+                  String nom = "";
+                  int j;
+                  j =i;
+                  do{
+                    nom += currC;
+                    j+=1;
+                    currC =str.charAt(j);
+                  }
+                  while( j < taille && Character.isAlphabetic(currC));
+                  if (currC == '('){
+                    int nbPara = 0;
+                    i = j;
+                    j += 3;
+                    do{
+                      j+=1;
+                      currC = str.charAt(j);
+                      if(currC == '('){
+                        nbPara +=1;
+                      }
+                      else if(currC == ')'){
+                        nbPara -=1;
+                      }      
+                    } 
+                  while(currC != ')' || nbPara != 0);
+
+                    
+                    traduction+=nom + "(";
+                    i=j;
+                  
+                  }
+                  else{
+                    traduction +=nom;
+                  }
+                    System.out.println("Nom " + nom);
+                                    
                 }
                 break;
             }
@@ -164,6 +207,43 @@ public class Traduire {
                 Constante cons = new Constante(constante);
                 return cons;
             }
+            else if(Character.isAlphabetic(currC)){
+                  String nom = "";
+                  int i = 0;
+                  int j = 0;
+                  do{
+                    nom += currC;
+                    j+=1;
+                    currC =str.charAt(j);
+                  }
+                  while( j < taille && Character.isAlphabetic(currC));
+
+                  if (currC == '('){
+                    int nbPara = 0;
+                    i = j + 4;
+                    j += 3;
+                    do{
+                      j+=1;
+                      currC = str.charAt(j);
+                      if(currC == '('){
+                        nbPara +=1;
+                      }
+                      else if(currC == ')'){
+                        nbPara -=1;
+                      }      
+                    } 
+                  while(currC != ')' || nbPara != 0);
+                    System.out.println(str);
+                    String strF = Traduire.reecriture(str.substring(i,j+1));
+                    Fonction f = new Fonction(nom,Traduire.traduction(strF));
+                    return f;
+                  
+                  }
+                  else{
+                    Variable x = new Variable(nom);
+                    return x;
+                  }                                    
+                }
             break;
 
         }
