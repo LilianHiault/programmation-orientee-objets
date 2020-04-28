@@ -16,7 +16,9 @@ class Main {
 
         /* - - - Test traduction - - - */
 
-        System.out.println("Tests traduction\n");
+        System.out.println("TP5 - VALLET Baptiste & HIAULT Lilian\n");
+
+        System.out.println("- - -\n\"Pour entrer un calcul vous devez d\'abord rentrer son expression par exemple :\n(a * (1 + (2.0/x)))\nIl vous sera ensuite demandé de rentrer une affectation des variables. Ici, prenons :\na = 2.5, x = 4\nPuis l'expression sera résolue en fonction des variables.\"\n- - -\n");
 
         Scanner scan = new Scanner(System.in);
 
@@ -26,11 +28,11 @@ class Main {
 
         /* Transformer la string en expression */
         String strExpPref = Traduire.reecriture(strExp); // Transforme en notation préfixée
-        System.out.format("Expression préfixée : %s%n", strExpPref);
+        System.out.format("- - -\nExpression préfixée : %s%n", strExpPref);
 
         Noeud racine = Traduire.traduction(strExpPref);
         Expression exp = new Expression(racine);
-        System.out.format("toString() de l'expression entrée :  %s%n", exp.toString());
+        System.out.format("Expression enregistrée :  %s%n- - -%n", exp.toString());
 
         /* Affectation */
         System.out.println("Entrez une affectation : ");
@@ -44,13 +46,13 @@ class Main {
             affVar = var.trim().split("=");
             aff.addCouple(affVar[0].trim(), Double.parseDouble(affVar[1].trim()));
         }
-        System.out.format("Affectation enregistrée : %s%n", aff.toString());
+        System.out.format("- - -%nAffectation enregistrée :%s%n", aff.toString());
 
         /* Evaluer l'expression */
         exp.eval(aff);
 
         /* Résoudre l'expression */
         double resultat = exp.resoudre();
-        System.out.format("Le résultat de l'opération est : %f.%n", resultat);
+        System.out.format("- - -%nLe résultat de l'opération est : %f.%n", resultat);
     }
 }
