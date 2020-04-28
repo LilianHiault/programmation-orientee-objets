@@ -163,7 +163,7 @@ public class Traduire {
                   else{
                     traduction +=nom;
                   }
-                    System.out.println("Nom " + nom);
+                    //System.out.println("Nom " + nom);
                                     
                 }
                 break;
@@ -176,7 +176,7 @@ public class Traduire {
         /* De notation préfixée à un noeud */
 
         int taille = str.length();
-        System.out.println("traduction " + str + " " + taille) ;
+        //System.out.println("traduction " + str + " " + taille) ;
         
         char currC =str.charAt(0);
         double currNum = 0;
@@ -217,11 +217,9 @@ public class Traduire {
                     currC =str.charAt(j);
                     nom += currC;
                     j+=1;
-                    System.out.println( j + " " + taille) ;
                   }
                   while( j < taille && Character.isAlphabetic(currC));
 
-                    System.out.println(nom);
 
                   if (currC == '('){
                     int nbPara = 0;
@@ -238,14 +236,14 @@ public class Traduire {
                       }      
                     } 
                   while(currC != ')' || nbPara != 0);
-                    System.out.println("Fonction "  +str.substring(0,i-2) + str.substring(i,j+1));
+                   // System.out.println("Fonction "  +str.substring(0,i-2) + str.substring(i,j+1));
                     String strF = str.substring(i,j+1);
                     Fonction f = new Fonction(str.substring(0,i-2),Traduire.traduction(strF));
                     return f;
                   
                   }
                   else{
-                    System.out.println("variable " + nom);
+                   // System.out.println("variable " + nom);
                     Variable x = new Variable(nom);
                     return x;
                   }                                    
