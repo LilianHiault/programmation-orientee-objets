@@ -175,28 +175,30 @@ public class Traduire {
     public static Noeud traduction(String str){
         /* De notation préfixée à un noeud */
 
-        char currC =str.charAt(0);
         int taille = str.length();
+        System.out.println("traduction " + str + " " + taille) ;
+        
+        char currC =str.charAt(0);
         double currNum = 0;
         switch (currC) {
             case '+':
             ArrayList<Integer> xSum = trouveChamps(str);
-            Somme sum = new Somme(traduction(str.substring(xSum.get(0),(xSum.get(1)))),traduction(str.substring(xSum.get(2),(xSum.get(3)))));
+            Somme sum = new Somme(traduction(str.substring(xSum.get(0),(xSum.get(1)+1))),traduction(str.substring(xSum.get(2),(xSum.get(3)))));
             return sum;
 
             case '-':
             ArrayList<Integer> xDiff = trouveChamps(str);
-            Difference diff  = new Difference(traduction(str.substring(xDiff.get(0),(xDiff.get(1)))),traduction(str.substring(xDiff.get(2),(xDiff.get(3)))));
+            Difference diff  = new Difference(traduction(str.substring(xDiff.get(0),(xDiff.get(1)+1))),traduction(str.substring(xDiff.get(2),(xDiff.get(3)))));
             return diff;
 
             case '*':
             ArrayList<Integer> xDiv = trouveChamps(str);
-            Multiplication mult = new Multiplication(traduction(str.substring(xDiv.get(0),(xDiv.get(1)))),traduction(str.substring(xDiv.get(2),(xDiv.get(3)))));
+            Multiplication mult = new Multiplication(traduction(str.substring(xDiv.get(0),(xDiv.get(1)+1))),traduction(str.substring(xDiv.get(2),(xDiv.get(3)))));
             return mult;
 
             case '/':
             ArrayList<Integer> xMult = trouveChamps(str);
-            Division div = new Division(traduction(str.substring(xMult.get(0),(xMult.get(1)))),traduction(str.substring(xMult.get(2),(xMult.get(3)))));
+            Division div = new Division(traduction(str.substring(xMult.get(0),(xMult.get(1)+1))),traduction(str.substring(xMult.get(2),(xMult.get(3)))));
             return div;
 
             default:
@@ -212,16 +214,19 @@ public class Traduire {
                   int i = 0;
                   int j = 0;
                   do{
+                    currC =str.charAt(j);
                     nom += currC;
                     j+=1;
-                    currC =str.charAt(j);
+                    System.out.println( j + " " + taille) ;
                   }
                   while( j < taille && Character.isAlphabetic(currC));
 
+                    System.out.println(nom);
+
                   if (currC == '('){
                     int nbPara = 0;
-                    i = j + 4;
-                    j += 3;
+                    j += 1;
+                    i = j;
                     do{
                       j+=1;
                       currC = str.charAt(j);
@@ -233,19 +238,21 @@ public class Traduire {
                       }      
                     } 
                   while(currC != ')' || nbPara != 0);
-                    System.out.println(str);
-                    String strF = Traduire.reecriture(str.substring(i,j+1));
-                    Fonction f = new Fonction(nom,Traduire.traduction(strF));
+                    System.out.println("Fonction "  +str.substring(0,i-2) + str.substring(i,j+1));
+                    String strF = str.substring(i,j+1);
+                    Fonction f = new Fonction(str.substring(0,i-2),Traduire.traduction(strF));
                     return f;
                   
                   }
                   else{
+                    System.out.println("variable " + nom);
                     Variable x = new Variable(nom);
                     return x;
                   }                                    
                 }
             break;
 
+        
         }
         Constante a = new Constante(0);
         return a;
