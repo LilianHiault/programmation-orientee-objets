@@ -18,17 +18,31 @@ class Main {
 
         System.out.println("TP5 - VALLET Baptiste & HIAULT Lilian\n");
 
-        System.out.println("- - -\n\"Pour entrer un calcul vous devez d\'abord rentrer son expression par exemple :\n(a * (1 + (2.0/x)))\nIl vous sera ensuite demandé de rentrer une affectation des variables. Ici, prenons :\na = 2.5, x = 4\nPuis l'expression sera résolue en fonction des variables.\"\n- - -\n");
-
         Scanner scan = new Scanner(System.in);
+
+        System.out.println("Entrez 1 pour écrire une expression.\nEntrez 2 pour utiliser l'écriture préfixée.");
+        int answer = Integer.parseInt(scan.nextLine());
+
+        if (answer == 1) {
+            System.out.println("\n- - -\n\"Pour entrer un calcul vous devez d\'abord rentrer son expression par exemple : (a * (1 + (2.0/x)))\nIl vous sera ensuite demandé de rentrer une affectation des variables. Ici, prenons : a = 2.5, x = 4\nPuis l'expression sera résolue en fonction des variables.\"\n- - -\n");
+        } else if (answer == 2) {
+            System.out.println("\n- - -\n\"Pour entrer un calcul vous devez d\'abord rentrer son expression en écriture préfixée par exemple : *(a,+(1.0,/(2.0,x))))\nIl vous sera ensuite demandé de rentrer une affectation des variables. Ici, prenons : a = 2.5, x = 4\nPuis l'expression sera résolue en fonction des variables.\"\n- - -\n");
+        } else {
+            System.out.println("La réponse n'est pas valide.");
+        }
 
         /* Expression */
         System.out.println("Entrez une expression : ");
         String strExp = scan.nextLine();
 
         /* Transformer la string en expression */
-        String strExpPref = Traduire.reecriture(strExp); // Transforme en notation préfixée
-        System.out.format("- - -\nExpression préfixée : %s%n", strExpPref);
+        String strExpPref;
+        if (answer == 1) {
+            strExpPref = Traduire.reecriture(strExp); // Transforme en notation préfixée
+            System.out.format("- - -\nExpression préfixée : %s%n", strExpPref);
+        } else {
+            strExpPref = strExp;
+        }
 
         Noeud racine = Traduire.traduction(strExpPref);
         Expression exp = new Expression(racine);

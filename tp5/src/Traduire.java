@@ -122,6 +122,9 @@ public class Traduire {
                 default:
                 if (Character.isDigit(currC) ) {
                     int suite = separeDouble(str);
+                    if (str.substring(i,i+suite).equals("")) {
+                        throw new IllegalArgumentException("Erreur lors de la recherche de double !");
+                    }
                     Double constante = Double.parseDouble(str.substring(i,i+suite));
                     //System.out.println(constante + " "+ suite +" "+ str + "   " + str.substring(i,i+suite));
                     i += suite-1;
@@ -151,20 +154,20 @@ public class Traduire {
                       }
                       else if(currC == ')'){
                         nbPara -=1;
-                      }      
-                    } 
+                      }
+                    }
                   while(currC != ')' || nbPara != 0);
 
-                    
+
                     traduction+=nom + "(";
                     i=j;
-                  
+
                   }
                   else{
                     traduction +=nom;
                   }
                     //System.out.println("Nom " + nom);
-                                    
+
                 }
                 break;
             }
@@ -177,7 +180,7 @@ public class Traduire {
 
         int taille = str.length();
         //System.out.println("traduction " + str + " " + taille) ;
-        
+
         char currC =str.charAt(0);
         double currNum = 0;
         switch (currC) {
@@ -233,24 +236,24 @@ public class Traduire {
                       }
                       else if(currC == ')'){
                         nbPara -=1;
-                      }      
-                    } 
+                      }
+                    }
                   while(currC != ')' || nbPara != 0);
                    // System.out.println("Fonction "  +str.substring(0,i-2) + str.substring(i,j+1));
                     String strF = str.substring(i,j+1);
                     Fonction f = new Fonction(str.substring(0,i-2),Traduire.traduction(strF));
                     return f;
-                  
+
                   }
                   else{
                    // System.out.println("variable " + nom);
                     Variable x = new Variable(nom);
                     return x;
-                  }                                    
+                  }
                 }
             break;
 
-        
+
         }
         Constante a = new Constante(0);
         return a;
